@@ -9,7 +9,7 @@ class Authentication::UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save
-            redirect_to "/main/index"
+            redirect_to "/main/index" 
         else
             render :new, status: :unprocessable_entity
         end

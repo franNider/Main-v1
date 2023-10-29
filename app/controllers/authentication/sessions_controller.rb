@@ -8,9 +8,9 @@ class Authentication::SessionsController < ApplicationController
         @user = User.find_by("dni = :dni", { dni: params[:dni] })
         if @user&.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect_to "/main/index"
+            redirect_to "/main/index" , notice: "Sesion iniciada"
         else
-            redirect_to new_session_path
+            redirect_to new_session_path 
         end
     end
 

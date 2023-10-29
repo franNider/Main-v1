@@ -1,9 +1,11 @@
 <%= form_with(model: @user) do |form| %>
-  <% @user.errors.full_messages.each do |error| %>
-    <div>
+ <div class="alert alert.prymary">
+ <% @user.errors.full_messages.each do |error| %>
+    <li>
       <%= error %>
-    </div>
+    </li>
   <% end %>
+</div>
 
   <div>
     <%= form.label :email %>
@@ -26,6 +28,7 @@
     </div>
 
     <div> 
+         <%= form.label :rol %>
          <%= form.select :rol, ["Usuario", "Administrador"]%>
     </div>
 

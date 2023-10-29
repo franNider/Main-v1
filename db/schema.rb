@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_26_003556) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_29_203258) do
+  create_table "perros", force: :cascade do |t|
+    t.string "nombre"
+    t.string "raza"
+    t.string "sexo"
+    t.string "pelo"
+    t.string "color"
+    t.float "peso"
+    t.integer "edad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "turnos", force: :cascade do |t|
+    t.string "estado"
+    t.string "nombre"
+    t.string "apellido"
+    t.string "motivo"
+    t.datetime "fecha"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.integer "dni", null: false

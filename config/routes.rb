@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'turnos/index'
   get 'perfiles/index'
   get 'authentication/sessions/new'
+  get 'turnos/new'
 
   resources :main
   namespace :authentication, path: '', as: '' do

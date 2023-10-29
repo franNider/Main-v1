@@ -1,36 +1,37 @@
 class User < ApplicationRecord
-    has_secure_password
+  has_secure_password
 
-    validates :email, presence: true, uniqueness: true,
-    format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i,
-      message: :invalid
-    }
+  validates :email, presence: true, uniqueness: true,
+  format: { with: /\A([\w+-].?)+@[a-z\d-]+(.[a-z]+)*.[a-z]+\z/i,
+    message: "formato del mail invalido"
+  }
 
-    validates :dni, presence: true, uniqueness: true,
-    format: {
-      with: /\A[0-9]+\z/,
-      message: :invalid
-    }
+  validates :dni, 
+  presence: true,
+  uniqueness: true,
+  format: {
+    with: /\A[0-9]+\z/,
+    message: "debe tener solo números"
+  }
 
-    validates :password, presence: true
-    validates :nombre, presence: true,
-    format: {
+  validates :password, presence: true
+  validates :nombre, presence: true,
+  format: {
+    with: /\A[a-z-A-Z]+\z/,
+    message: "solo se permiten letras en el nombre"
+  }
+  validates :apellido, presence: true,
+  format: {
       with: /\A[a-z-A-Z]+\z/,
-      message: :invalid
+      message: "solo se permiten letras en el apellido"
     }
-    validates :apellido, presence: true,
-    format: {
-      with: /\A[a-z-A-Z]+\z/,
-      message: :invalid
-    }
+  validates :rol, presence: true
 
-    validates :rol, presence: true
+  before_save :downcase_attributes
 
-    before_save :downcase_attributes
+  private
 
-    private
-    
-    def downcase_attributes
-        self.email = email.downcase
-    end
+  def downcase_attributes
+      self.email = email.downcase
+  end
 end
